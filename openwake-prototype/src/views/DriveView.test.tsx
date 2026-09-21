@@ -23,6 +23,7 @@ function DriveHarness() {
       onCritical={() => dispatch({ type: 'SIMULATE_CRITICAL' })}
       onNormal={() => dispatch({ type: 'RESTORE_NORMAL' })}
       onEnd={() => dispatch({ type: 'END_SESSION' })}
+      onAcknowledge={() => dispatch({ type: 'ACKNOWLEDGE_ALERT' })}
     />
   )
 }

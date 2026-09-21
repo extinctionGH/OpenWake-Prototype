@@ -46,6 +46,7 @@ export default function App() {
           onCritical={() => dispatch({ type: 'SIMULATE_CRITICAL' })}
           onNormal={() => dispatch({ type: 'RESTORE_NORMAL' })}
           onEnd={() => dispatch({ type: 'END_SESSION' })}
+          onAcknowledge={() => dispatch({ type: 'ACKNOWLEDGE_ALERT' })}
         />
       ) : (
         <section className="view-placeholder" aria-labelledby="view-title">

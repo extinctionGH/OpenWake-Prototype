@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Activity, Camera, Clock3, Eye, Gauge, Move3d, ScanEye, TimerReset, Waves } from 'lucide-react'
 import { CameraSimulator } from '../components/CameraSimulator'
+import { CriticalAlert } from '../components/CriticalAlert'
 import { DemoControls } from '../components/DemoControls'
 import { EventTimeline } from '../components/EventTimeline'
 import { SignalChart } from '../components/SignalChart'
@@ -15,6 +16,7 @@ type DriveViewProps = {
   onCritical: () => void
   onNormal: () => void
   onEnd: () => void
+  onAcknowledge: () => void
 }
 
 const formatDuration = (elapsedMs: number) => {
@@ -24,7 +26,7 @@ const formatDuration = (elapsedMs: number) => {
   return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 }
 
-export function DriveView({ state, onTick, onWarning, onCritical, onNormal, onEnd }: DriveViewProps) {
+export function DriveView({ state, onTick, onWarning, onCritical, onNormal, onEnd, onAcknowledge }: DriveViewProps) {
   const elapsedRef = useRef(state.elapsedMs)
   const onTickRef = useRef(onTick)
   onTickRef.current = onTick
@@ -64,6 +66,12 @@ export function DriveView({ state, onTick, onWarning, onCritical, onNormal, onEn
       </header>
 
       <div className="drive-cockpit">
+        {state.driverState === 'caution' && (
+          <div className="caution-banner" role="note">
+            <span><Activity size={16} aria-hidden="true" /></span>
+            <div><strong>Possible fatigue pattern</strong><small>Simulated indicators have crossed the caution profile.</small></div>
+          </div>
+        )}
         <section className="drive-camera" aria-label="Live simulated camera area">
           <CameraSimulator status="monitoring" driverState={state.driverState} quality={sample.quality} />
           <div className={`risk-overlay risk-overlay--${state.driverState}`}>
@@ -129,6 +137,7 @@ export function DriveView({ state, onTick, onWarning, onCritical, onNormal, onEn
 
         <DemoControls onNormal={onNormal} onWarning={onWarning} onCritical={onCritical} onEnd={onEnd} />
       </div>
+      {state.driverState === 'critical' && <CriticalAlert onAcknowledge={onAcknowledge} />}
     </div>
   )
 }

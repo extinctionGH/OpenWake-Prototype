@@ -1419,6 +1419,169 @@ button:disabled {
 .demo-control--critical > svg { color: var(--danger); }
 .demo-control--end > svg { color: #8e9996; }
 
+.caution-banner {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 180, 91, 0.25);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 180, 91, 0.07);
+}
+
+.caution-banner > span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 180, 91, 0.1);
+  color: var(--amber);
+}
+
+.caution-banner strong,
+.caution-banner small {
+  display: block;
+}
+
+.caution-banner strong {
+  color: var(--amber);
+  font-size: 0.75rem;
+}
+
+.caution-banner small {
+  margin-top: 0.18rem;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+}
+
+.critical-alert-backdrop {
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: max(0.75rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right)) max(0.75rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
+  background: rgba(2, 3, 3, 0.77);
+  backdrop-filter: blur(0.6rem);
+}
+
+.critical-alert {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 28rem);
+  max-height: calc(100svh - 1.5rem);
+  padding: clamp(1.25rem, 5vh, 2.2rem);
+  border: 1px solid rgba(255, 102, 76, 0.5);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 102, 76, 0.12), transparent 45%),
+    #100e0e;
+  text-align: center;
+}
+
+.critical-alert::before {
+  position: absolute;
+  top: 0;
+  right: 12%;
+  left: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--danger), transparent);
+  content: '';
+}
+
+.critical-alert__signal {
+  position: relative;
+  display: grid;
+  width: 4.4rem;
+  height: 4.4rem;
+  place-items: center;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 102, 76, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 102, 76, 0.08);
+  color: var(--danger);
+}
+
+.critical-alert__signal > span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 102, 76, 0.38);
+  border-radius: 50%;
+}
+
+.critical-alert__kicker {
+  margin: 1.25rem 0 0;
+  color: var(--danger);
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.critical-alert h2 {
+  margin: 0.55rem 0 0;
+  color: var(--danger);
+  font-size: clamp(3rem, 14vw, 5rem);
+  font-weight: 690;
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+}
+
+.critical-alert > p:not(.critical-alert__kicker) {
+  margin: 0.85rem 0 0;
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.critical-alert__indicators {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+}
+
+.critical-alert__indicators span {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text-muted);
+  font-size: 0.6rem;
+}
+
+.critical-alert__indicators svg {
+  flex: 0 0 auto;
+  color: var(--danger);
+}
+
+.critical-alert__acknowledge {
+  width: 100%;
+  margin-top: 1.25rem;
+  border-color: var(--danger);
+  background: var(--danger);
+  color: #250603;
+}
+
+.critical-alert__acknowledge:hover:not(:disabled) {
+  border-color: #ff8a77;
+  background: #ff8a77;
+}
+
+.critical-alert > small {
+  display: block;
+  margin-top: 0.7rem;
+  color: #716967;
+  font-size: 0.58rem;
+}
+
 .navigation--bottom {
   position: fixed;
   z-index: 40;
