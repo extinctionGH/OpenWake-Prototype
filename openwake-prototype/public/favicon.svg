@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="OpenWake shield eye">
+  <path fill="#0d1312" stroke="#77f0dd" stroke-width="4" d="M32 4 53 12v17c0 14-8 24-21 31C19 53 11 43 11 29V12Z"/>
+  <path fill="none" stroke="#77f0dd" stroke-linecap="round" stroke-width="4" d="M18 31s6-9 14-9 14 9 14 9-6 9-14 9-14-9-14-9Z"/>
+  <circle cx="32" cy="31" r="5" fill="#77f0dd"/>
+</svg>
