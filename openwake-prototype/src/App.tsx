@@ -2,6 +2,7 @@ import { useReducer } from 'react'
 import { AppShell } from './components/AppShell'
 import { demoReducer, initialDemoState } from './demo/demoReducer'
 import type { AppView } from './demo/demoTypes'
+import { OverviewView } from './views/OverviewView'
 
 export default function App() {
   const [state, dispatch] = useReducer(demoReducer, initialDemoState)
@@ -20,14 +21,19 @@ export default function App() {
       canViewSummary={state.view === 'summary'}
       onNavigate={navigate}
     >
-      <section className="view-placeholder" aria-labelledby="view-title">
-        <p className="eyebrow">OpenWake / {state.view}</p>
-        <h1 id="view-title">Driver awareness, presented clearly.</h1>
-        <p>Each signal in this experience is deterministic and simulated locally.</p>
-        <button className="button button--primary" type="button" onClick={() => dispatch({ type: 'START_CALIBRATION' })}>
-          Start calibration
-        </button>
-      </section>
+      {state.view === 'overview' ? (
+        <OverviewView
+          events={state.events}
+          onStartCalibration={() => dispatch({ type: 'START_CALIBRATION' })}
+          onReplay={() => dispatch({ type: 'RESET_DEMO' })}
+        />
+      ) : (
+        <section className="view-placeholder" aria-labelledby="view-title">
+          <p className="eyebrow">OpenWake / {state.view}</p>
+          <h1 id="view-title">This demo stage is loading next.</h1>
+          <p>Each signal in this experience is deterministic and simulated locally.</p>
+        </section>
+      )}
     </AppShell>
   )
 }
