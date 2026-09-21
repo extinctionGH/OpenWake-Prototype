@@ -6,7 +6,7 @@ OpenWake is a presentation-ready, client-only React prototype for explaining a s
 
 ## Local setup
 
-Requirements: Node.js 20 or newer and npm.
+Requirements: Node.js 20.19+ or 22.12+ and npm (matching Vite's supported Node versions).
 
 ```bash
 npm install
