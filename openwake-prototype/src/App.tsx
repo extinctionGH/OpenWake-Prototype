@@ -5,6 +5,7 @@ import type { AppView } from './demo/demoTypes'
 import { OverviewView } from './views/OverviewView'
 import { CalibrationView } from './views/CalibrationView'
 import { DriveView } from './views/DriveView'
+import { SummaryView } from './views/SummaryView'
 
 export default function App() {
   const [state, dispatch] = useReducer(demoReducer, initialDemoState)
@@ -47,6 +48,12 @@ export default function App() {
           onNormal={() => dispatch({ type: 'RESTORE_NORMAL' })}
           onEnd={() => dispatch({ type: 'END_SESSION' })}
           onAcknowledge={() => dispatch({ type: 'ACKNOWLEDGE_ALERT' })}
+        />
+      ) : state.view === 'summary' ? (
+        <SummaryView
+          state={state}
+          onReplay={() => dispatch({ type: 'RESET_DEMO' })}
+          onReturn={() => dispatch({ type: 'RESET_DEMO' })}
         />
       ) : (
         <section className="view-placeholder" aria-labelledby="view-title">
