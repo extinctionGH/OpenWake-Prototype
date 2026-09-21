@@ -1068,6 +1068,357 @@ button:disabled {
   margin-top: 0;
 }
 
+.drive-view {
+  min-width: 0;
+}
+
+.drive-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.drive-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.driver-state {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.driver-state__indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: 0 0 auto;
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  background: var(--aqua);
+  box-shadow: 0 0 0 0.3rem rgba(119, 240, 221, 0.12), 0 0 1.25rem rgba(119, 240, 221, 0.25);
+}
+
+.driver-state__indicator--caution {
+  background: var(--amber);
+  box-shadow: 0 0 0 0.3rem rgba(255, 180, 91, 0.12), 0 0 1.25rem rgba(255, 180, 91, 0.2);
+}
+
+.driver-state__indicator--critical {
+  background: var(--danger);
+  box-shadow: 0 0 0 0.3rem rgba(255, 102, 76, 0.13), 0 0 1.35rem rgba(255, 102, 76, 0.28);
+}
+
+.driver-state strong,
+.driver-state span {
+  display: block;
+}
+
+.driver-state strong {
+  color: var(--aqua);
+  font-size: clamp(1.8rem, 7vw, 3.35rem);
+  font-weight: 620;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.drive-view--caution .driver-state strong {
+  color: var(--amber);
+}
+
+.drive-view--critical .driver-state strong {
+  color: var(--danger);
+}
+
+.driver-state span {
+  margin-top: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.session-clock {
+  min-width: 8.5rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-1);
+}
+
+.session-clock > span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+}
+
+.session-clock strong,
+.session-clock small {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+.session-clock strong {
+  margin-top: 0.3rem;
+  font-size: 1.4rem;
+  font-weight: 550;
+  letter-spacing: -0.04em;
+}
+
+.session-clock small {
+  margin-top: 0.15rem;
+  color: #697572;
+  font-size: 0.58rem;
+}
+
+.drive-cockpit {
+  display: grid;
+  gap: 1rem;
+}
+
+.drive-camera {
+  position: relative;
+  min-width: 0;
+}
+
+.drive-camera .camera-simulator {
+  min-height: clamp(25rem, 70vh, 46rem);
+}
+
+.risk-overlay {
+  position: absolute;
+  z-index: 5;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: rgba(9, 12, 12, 0.92);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(0.7rem);
+}
+
+.risk-overlay > span,
+.risk-overlay > small {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+.risk-overlay > strong {
+  color: var(--aqua);
+  font-size: 1.65rem;
+  font-weight: 580;
+  font-variant-numeric: tabular-nums;
+}
+
+.risk-overlay--caution > strong { color: var(--amber); }
+.risk-overlay--critical > strong { color: var(--danger); }
+
+.risk-track {
+  overflow: hidden;
+  grid-column: 1 / -1;
+  height: 0.25rem;
+  border-radius: 999px;
+  background: #232a29;
+}
+
+.risk-track span,
+.meter span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--aqua);
+  transform-origin: left;
+  transition: transform 260ms var(--ease), background-color 200ms var(--ease);
+}
+
+.risk-overlay--caution .risk-track span,
+.meter--warning span { background: var(--amber); }
+
+.risk-overlay--critical .risk-track span,
+.meter--danger span { background: var(--danger); }
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.telemetry-card {
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-1);
+}
+
+.telemetry-card--wide {
+  grid-column: 1 / -1;
+}
+
+.telemetry-card__label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.64rem;
+}
+
+.telemetry-card__value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
+}
+
+.telemetry-card__value strong {
+  font-size: clamp(1.3rem, 5vw, 2rem);
+  font-weight: 560;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.telemetry-card__value span,
+.telemetry-card > small {
+  color: #6e7a77;
+  font-size: 0.58rem;
+}
+
+.telemetry-card > small {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.meter {
+  overflow: hidden;
+  height: 0.25rem;
+  margin-top: 0.65rem;
+  border-radius: 999px;
+  background: #252d2b;
+}
+
+.pose-values {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.pose-values span {
+  color: #6f7a77;
+  font-size: 0.58rem;
+}
+
+.pose-values strong {
+  display: block;
+  margin-top: 0.18rem;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 560;
+  font-variant-numeric: tabular-nums;
+}
+
+.drive-signal-panel,
+.drive-events-panel {
+  min-width: 0;
+}
+
+.drive-events-panel .event-timeline {
+  max-height: 19rem;
+  overflow: auto;
+}
+
+.demo-controls {
+  padding: 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(119, 240, 221, 0.035), transparent 45%), var(--surface-1);
+}
+
+.demo-controls__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.demo-controls__heading h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.demo-controls__heading > span {
+  color: #6f7a77;
+  font-size: 0.6rem;
+}
+
+.demo-controls__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.demo-control {
+  min-height: 3.5rem;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: #111515;
+  color: var(--text-muted);
+  text-align: left;
+  transition: border-color 180ms var(--ease), background-color 180ms var(--ease), color 180ms var(--ease);
+}
+
+.demo-control:hover {
+  border-color: var(--border-strong);
+  background: #171c1c;
+  color: var(--text);
+}
+
+.demo-control > svg {
+  flex: 0 0 auto;
+}
+
+.demo-control strong,
+.demo-control small {
+  display: block;
+}
+
+.demo-control strong {
+  font-size: 0.67rem;
+  font-weight: 620;
+}
+
+.demo-control small {
+  overflow: hidden;
+  margin-top: 0.18rem;
+  color: #697471;
+  font-size: 0.55rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.demo-control--normal > svg { color: var(--aqua); }
+.demo-control--warning > svg { color: var(--amber); }
+.demo-control--critical > svg { color: var(--danger); }
+.demo-control--end > svg { color: #8e9996; }
+
 .navigation--bottom {
   position: fixed;
   z-index: 40;
@@ -1181,6 +1532,35 @@ button:disabled {
   .calibration-rail {
     position: sticky;
     top: calc(var(--topbar-height) + 1rem);
+  }
+
+  .drive-cockpit {
+    grid-template-columns: minmax(0, 1.45fr) minmax(19rem, 0.65fr);
+    align-items: start;
+  }
+
+  .drive-camera {
+    grid-column: 1;
+  }
+
+  .telemetry-rail {
+    grid-column: 2;
+  }
+
+  .drive-signal-panel {
+    grid-column: 1;
+  }
+
+  .drive-events-panel {
+    grid-column: 2;
+  }
+
+  .demo-controls {
+    grid-column: 1 / -1;
+  }
+
+  .demo-controls__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -1301,5 +1681,22 @@ button:disabled {
 
   .signal-chart {
     height: 18rem;
+  }
+
+  .drive-cockpit {
+    grid-template-columns: minmax(0, 1.55fr) minmax(20rem, 0.62fr);
+  }
+
+  .drive-camera {
+    grid-row: span 2;
+  }
+
+  .drive-signal-panel {
+    grid-column: 1;
+  }
+
+  .telemetry-rail,
+  .drive-events-panel {
+    grid-column: 2;
   }
 }

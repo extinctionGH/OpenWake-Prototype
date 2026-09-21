@@ -29,10 +29,17 @@ const appendEvent = (
   timestampMs: number,
   severity: SessionEvent['severity'],
   label: string,
-) => [
-  ...events,
-  { id: `${timestampMs}-${severity}-${label.toLowerCase().replaceAll(' ', '-')}`, timestampMs, severity, label },
-].slice(-6)
+) => {
+  const lastSequence = events.reduce((highest, event) => {
+    const match = event.id.match(/^event-(\d+)-/)
+    return match ? Math.max(highest, Number(match[1])) : highest
+  }, 0)
+
+  return [
+    ...events,
+    { id: `event-${lastSequence + 1}-${severity}-${label.toLowerCase().replaceAll(' ', '-')}`, timestampMs, severity, label },
+  ].slice(-6)
+}
 
 export function demoReducer(state: DemoState, action: DemoAction): DemoState {
   switch (action.type) {

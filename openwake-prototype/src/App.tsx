@@ -4,6 +4,7 @@ import { demoReducer, initialDemoState } from './demo/demoReducer'
 import type { AppView } from './demo/demoTypes'
 import { OverviewView } from './views/OverviewView'
 import { CalibrationView } from './views/CalibrationView'
+import { DriveView } from './views/DriveView'
 
 export default function App() {
   const [state, dispatch] = useReducer(demoReducer, initialDemoState)
@@ -36,6 +37,15 @@ export default function App() {
           onSetProgress={(progress) => dispatch({ type: 'SET_CALIBRATION_PROGRESS', progress })}
           onComplete={() => dispatch({ type: 'COMPLETE_CALIBRATION' })}
           onEnterDrive={() => dispatch({ type: 'ENTER_DRIVE_MODE' })}
+        />
+      ) : state.view === 'drive' ? (
+        <DriveView
+          state={state}
+          onTick={(elapsedMs) => dispatch({ type: 'TICK', elapsedMs })}
+          onWarning={() => dispatch({ type: 'SIMULATE_WARNING' })}
+          onCritical={() => dispatch({ type: 'SIMULATE_CRITICAL' })}
+          onNormal={() => dispatch({ type: 'RESTORE_NORMAL' })}
+          onEnd={() => dispatch({ type: 'END_SESSION' })}
         />
       ) : (
         <section className="view-placeholder" aria-labelledby="view-title">
