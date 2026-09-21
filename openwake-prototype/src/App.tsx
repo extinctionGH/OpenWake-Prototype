@@ -3,6 +3,7 @@ import { AppShell } from './components/AppShell'
 import { demoReducer, initialDemoState } from './demo/demoReducer'
 import type { AppView } from './demo/demoTypes'
 import { OverviewView } from './views/OverviewView'
+import { CalibrationView } from './views/CalibrationView'
 
 export default function App() {
   const [state, dispatch] = useReducer(demoReducer, initialDemoState)
@@ -26,6 +27,15 @@ export default function App() {
           events={state.events}
           onStartCalibration={() => dispatch({ type: 'START_CALIBRATION' })}
           onReplay={() => dispatch({ type: 'RESET_DEMO' })}
+        />
+      ) : state.view === 'calibration' ? (
+        <CalibrationView
+          stage={state.calibrationStage}
+          progress={state.calibrationProgress}
+          onStartBaseline={() => dispatch({ type: 'START_BASELINE' })}
+          onSetProgress={(progress) => dispatch({ type: 'SET_CALIBRATION_PROGRESS', progress })}
+          onComplete={() => dispatch({ type: 'COMPLETE_CALIBRATION' })}
+          onEnterDrive={() => dispatch({ type: 'ENTER_DRIVE_MODE' })}
         />
       ) : (
         <section className="view-placeholder" aria-labelledby="view-title">
