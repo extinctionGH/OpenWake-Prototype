@@ -43,7 +43,7 @@ export function DriveView({ state, onTick, onWarning, onCritical, onNormal, onEn
   const sample = sampleForState(state.driverState, state.elapsedMs)
   const stateLabel = state.driverState === 'attentive' ? 'ATTENTIVE' : state.driverState === 'caution' ? 'CAUTION' : 'WAKE NOW'
   const stateMessage = state.driverState === 'attentive' ? 'Signals remain inside the simulated baseline.' : state.driverState === 'caution' ? 'Possible fatigue pattern' : 'Prolonged eye closure simulated'
-  const tone = state.driverState === 'critical' ? 'danger' : state.driverState === 'caution' ? 'warning' : 'aqua'
+  const tone = state.driverState === 'critical' ? 'danger' : state.driverState === 'caution' ? 'warning' : 'success'
   const chartSamples = state.telemetry.length > 1 ? state.telemetry : [sampleForState('attentive', 0), sample]
 
   return (
@@ -52,7 +52,7 @@ export function DriveView({ state, onTick, onWarning, onCritical, onNormal, onEn
         <div>
           <div className="drive-header__meta">
             <p className="eyebrow">Drive Mode / Simulated</p>
-            <StatusBadge label="Local demo signal" tone="aqua" icon={Waves} />
+            <StatusBadge label="Local demo signal" tone={tone} icon={Waves} />
           </div>
           <div className="driver-state" role="status" aria-live="polite">
             <span className={`driver-state__indicator driver-state__indicator--${state.driverState}`} aria-hidden="true" />

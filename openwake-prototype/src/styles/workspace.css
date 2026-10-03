@@ -170,6 +170,22 @@ html, body { min-width: 0; }
 .caution-banner { background:#754514; border-color:#754514; color:#fff; }
 .caution-banner p,.caution-banner strong,.caution-banner svg { color:#fff; }
 .critical-alert__acknowledge { background:#812c38; border-color:#812c38; }
+.drive-view { --drive-accent:#24533d; --aqua:var(--drive-accent); }
+.drive-view--caution { --drive-accent:#896b12; --amber:var(--drive-accent); }
+.drive-view--critical { --drive-accent:#812c38; --danger:var(--drive-accent); }
+:root[data-theme='dark'] .drive-view--attentive { --drive-accent:#86b69b; }
+:root[data-theme='dark'] .drive-view--caution { --drive-accent:#e0c15c; }
+:root[data-theme='dark'] .drive-view--critical { --drive-accent:#db939a; }
+.drive-header { padding-bottom:18px; border-bottom:2px solid var(--drive-accent); }
+.driver-state strong,.risk-overlay > strong { color:var(--drive-accent); }
+.driver-state__indicator { background:var(--drive-accent); }
+.drive-camera .camera-simulator,.risk-overlay { border-color:var(--drive-accent); }
+.risk-track span,.meter--success span,.meter--warning span,.meter--danger span { background:var(--drive-accent); }
+.caution-banner { background:#dfc35b; border-color:#c5a641; color:#30280e; }
+.caution-banner strong,.caution-banner small,.caution-banner svg { color:#30280e; }
+.caution-banner > span { background:transparent; border-color:#a68a2d; }
+.drive-view--critical .critical-alert { border-color:#812c38; }
+.drive-view--critical .critical-alert h2,.drive-view--critical .critical-alert__kicker { color:var(--drive-accent); }
 @media (max-width: 900px) {
   .workspace-local { display: none; }
   .overview-dashboard, .drive-cockpit, .calibration-layout, .summary-grid { grid-template-columns: minmax(0, 1fr); }
