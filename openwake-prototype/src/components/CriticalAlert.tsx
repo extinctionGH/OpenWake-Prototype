@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { BellRing, Check, Volume2, Waves } from 'lucide-react'
+import { BellRing, Check, Droplets, Lightbulb } from 'lucide-react'
 
 type CriticalAlertProps = {
   onAcknowledge: () => void
@@ -36,8 +36,8 @@ export function CriticalAlert({ onAcknowledge }: CriticalAlertProps) {
         <p id="critical-alert-description">Prolonged eye closure simulated</p>
 
         <div className="critical-alert__indicators">
-          <span><Waves size={15} aria-hidden="true" />Visual vibration</span>
-          <span><Volume2 size={15} aria-hidden="true" />Demo tone · Optional</span>
+          <span><Droplets size={15} aria-hidden="true" />Primary spray · Not connected</span>
+          <span><Lightbulb size={15} aria-hidden="true" />Buzzer / LED · Not connected</span>
         </div>
 
         <button ref={acknowledgeRef} className="button critical-alert__acknowledge" type="button" onClick={onAcknowledge}>

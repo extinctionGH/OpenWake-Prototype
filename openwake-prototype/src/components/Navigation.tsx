@@ -6,7 +6,7 @@ type NavigationProps = {
   canEnterDrive: boolean
   canViewSummary: boolean
   onNavigate: (view: AppView) => void
-  variant: 'sidebar' | 'bottom'
+  variant: 'top'
 }
 
 const navigationItems = [

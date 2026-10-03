@@ -20,7 +20,7 @@ async function enterDriveMode(page: Page) {
 
 test('complete responsive presentation journey has no horizontal overflow', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByRole('heading', { name: 'Ready for demonstration.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Overview' })).toBeVisible()
   await expectNoHorizontalOverflow(page)
 
   await enterDriveMode(page)
@@ -36,7 +36,7 @@ test('complete responsive presentation journey has no horizontal overflow', asyn
   await expect(page.getByRole('heading', { name: 'Session complete.' })).toBeVisible()
   await expectNoHorizontalOverflow(page)
   await page.getByRole('button', { name: 'Replay demo' }).click()
-  await expect(page.getByRole('heading', { name: 'Ready for demonstration.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Overview' })).toBeVisible()
 })
 
 test('critical acknowledgement remains inside a 360 by 640 viewport', async ({ page }) => {
@@ -78,7 +78,20 @@ test('keyboard focus is visible and can start the core journey', async ({ page }
 test('layout remains usable at a zoom-equivalent narrow CSS viewport', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 })
   await page.goto('/')
-  await expect(page.getByRole('heading', { name: 'Ready for demonstration.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Overview' })).toBeVisible()
   await expectNoHorizontalOverflow(page)
   await expect(page.getByRole('button', { name: 'Start calibration' })).toBeInViewport()
+})
+
+test('workspace appearance persists and intervention outputs remain disconnected', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByText('Water spray', { exact: true })).toBeVisible()
+  await expect(page.getByText('Not connected', { exact: true })).toHaveCount(4)
+  await page.getByRole('button', { name: 'Switch to dark theme' }).click()
+  await page.reload()
+  await expect(page.getByRole('button', { name: 'Switch to light theme' })).toBeVisible()
+  await enterDriveMode(page)
+  await expect(page.getByText('Water spray', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Simulate critical' }).click()
+  await expect(page.getByRole('alertdialog')).toContainText('Primary spray · Not connected')
 })

@@ -1,5 +1,6 @@
 import { Activity, ArrowRight, Camera, CircleGauge, Cpu, RotateCcw, ShieldCheck } from 'lucide-react'
 import { EventTimeline } from '../components/EventTimeline'
+import { CameraSimulator } from '../components/CameraSimulator'
 import { FutureAccessoryCard } from '../components/FutureAccessoryCard'
 import { MetricCard } from '../components/MetricCard'
 import { SignalChart } from '../components/SignalChart'
@@ -25,11 +26,10 @@ export function OverviewView({ events, onStartCalibration, onReplay }: OverviewV
       <section className="overview-hero" aria-labelledby="overview-title">
         <div className="overview-hero__copy">
           <div className="overview-hero__meta">
-            <p className="eyebrow">Driver readiness</p>
-            <StatusBadge label="Prototype online" tone="success" />
+            <p className="eyebrow">Driver workspace</p>
           </div>
-          <h1 id="overview-title">Ready for<br /><span>demonstration.</span></h1>
-          <p>Run the two-minute OpenWake experience with deterministic eye, head-position, and signal-quality data.</p>
+          <h1 id="overview-title">Overview</h1>
+          <p>Driver observations, calibration readiness and intervention status.</p>
           <div className="overview-hero__actions">
             <button className="button button--primary" type="button" onClick={onStartCalibration}>
               Start calibration <ArrowRight size={17} aria-hidden="true" />
@@ -39,28 +39,21 @@ export function OverviewView({ events, onStartCalibration, onReplay }: OverviewV
             </button>
           </div>
         </div>
-        <div className="session-snapshot">
-          <div className="session-snapshot__header">
-            <span>Last simulated session</span>
-            <span className="status-dot" aria-hidden="true" />
-          </div>
-          <strong>24<span>min</span></strong>
-          <div className="session-snapshot__stats">
-            <div><span>Warnings</span><b>03</b></div>
-            <div><span>Critical</span><b>00</b></div>
-            <div><span>Quality</span><b>94%</b></div>
-          </div>
-        </div>
       </section>
 
       <section className="metrics-grid" aria-label="Simulated readiness metrics">
         <MetricCard label="Readiness" value="Ready" detail="Calibration available" icon={ShieldCheck} tone="success" />
         <MetricCard label="Fatigue index" value="18 / 100" detail="Low simulated risk" icon={CircleGauge} tone="aqua" />
         <MetricCard label="Camera quality" value="96%" detail="Simulated signal" icon={Camera} tone="aqua" />
-        <MetricCard label="Accessory" value="Offline" detail="Simulator-only state" icon={Cpu} />
+        <MetricCard label="Intervention" value="Disconnected" detail="Spray, buzzer and LED" icon={Cpu} />
       </section>
 
       <section className="overview-dashboard">
+        <article className="panel overview-camera-panel">
+          <div className="panel__heading"><div><h2>Driver observation</h2><p className="panel-subtitle">CAM-01 · Reference view</p></div><StatusBadge label="Not connected" tone="neutral" /></div>
+          <CameraSimulator status="aligned" />
+          <div className="signal-panel__footer"><span>Example eye landmarks</span><span>Calibration required before a session</span></div>
+        </article>
         <article className="panel signal-panel">
           <div className="panel__heading">
             <div>

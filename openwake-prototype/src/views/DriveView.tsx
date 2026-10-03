@@ -4,6 +4,7 @@ import { CameraSimulator } from '../components/CameraSimulator'
 import { CriticalAlert } from '../components/CriticalAlert'
 import { DemoControls } from '../components/DemoControls'
 import { EventTimeline } from '../components/EventTimeline'
+import { FutureAccessoryCard } from '../components/FutureAccessoryCard'
 import { SignalChart } from '../components/SignalChart'
 import { StatusBadge } from '../components/StatusBadge'
 import { sampleForState } from '../demo/demoTelemetry'
@@ -135,6 +136,7 @@ export function DriveView({ state, onTick, onWarning, onCritical, onNormal, onEn
           <EventTimeline events={state.events} />
         </article>
 
+        <FutureAccessoryCard />
         <DemoControls onNormal={onNormal} onWarning={onWarning} onCritical={onCritical} onEnd={onEnd} />
       </div>
       {state.driverState === 'critical' && <CriticalAlert onAcknowledge={onAcknowledge} />}
