@@ -161,7 +161,7 @@ html, body { min-width: 0; }
 .metrics-grid .metric-card > strong { color:#fff; }
 .metrics-grid .metric-card__topline,.metrics-grid .metric-card__icon { color:#d0d0d0; }
 .metrics-grid .metric-card > p { color:#a9a9a9; }
-:root[data-theme='dark'] .metrics-grid { background:#fff; border-color:#fff; }
+:root[data-theme='dark'] .metrics-grid { background:#f0efec; border-color:#f0efec; }
 :root[data-theme='dark'] .metric-card { border-color:#dedede; }
 :root[data-theme='dark'] .metrics-grid .metric-card > strong { color:#111; }
 :root[data-theme='dark'] .metrics-grid .metric-card__topline,:root[data-theme='dark'] .metrics-grid .metric-card__icon { color:#414141; }
