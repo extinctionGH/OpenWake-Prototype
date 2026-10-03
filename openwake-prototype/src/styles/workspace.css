@@ -154,11 +154,22 @@ html, body { min-width: 0; }
 .summary-grid { gap: 24px; }
 .metric-card > strong, .telemetry-card__value strong, .session-clock strong { font-variant-numeric: tabular-nums; }
 .telemetry-card:focus-within, .panel:focus-within { outline: 2px solid var(--aqua); outline-offset: 3px; }
-.output-row:nth-child(2) { border-left: 3px solid var(--aqua); padding-left: 12px; }
-.event-item--critical { border-left: 3px solid var(--danger); padding-left: 12px; }
+.output-row:nth-child(2) > svg { color: var(--aqua); }
 .metric-card strong { overflow-wrap: anywhere; }
-.metric-card:nth-child(2) { background: color-mix(in srgb, var(--aqua) 6%, var(--surface-1)); }
-.metric-card:nth-child(2) > strong { color: var(--aqua); }
+.metrics-grid { background:#111; border-color:#111; }
+.metrics-grid .metric-card { background:transparent; border-color:#363636; }
+.metrics-grid .metric-card > strong { color:#fff; }
+.metrics-grid .metric-card__topline,.metrics-grid .metric-card__icon { color:#d0d0d0; }
+.metrics-grid .metric-card > p { color:#a9a9a9; }
+:root[data-theme='dark'] .metrics-grid { background:#fff; border-color:#fff; }
+:root[data-theme='dark'] .metric-card { border-color:#dedede; }
+:root[data-theme='dark'] .metrics-grid .metric-card > strong { color:#111; }
+:root[data-theme='dark'] .metrics-grid .metric-card__topline,:root[data-theme='dark'] .metrics-grid .metric-card__icon { color:#414141; }
+:root[data-theme='dark'] .metrics-grid .metric-card > p { color:#666; }
+.event-item__icon { background:#174968; color:#fff; border-color:#174968; }
+.caution-banner { background:#754514; border-color:#754514; color:#fff; }
+.caution-banner p,.caution-banner strong,.caution-banner svg { color:#fff; }
+.critical-alert__acknowledge { background:#812c38; border-color:#812c38; }
 @media (max-width: 900px) {
   .workspace-local { display: none; }
   .overview-dashboard, .drive-cockpit, .calibration-layout, .summary-grid { grid-template-columns: minmax(0, 1fr); }
